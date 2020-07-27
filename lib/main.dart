@@ -55,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final bleRepository = context.watch<BleRepository>();
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text('${bleRepository.connected}'),
       ),
       body: _buildBody(bleRepository),
       floatingActionButton: FloatingActionButton(
@@ -71,7 +71,12 @@ class _MyHomePageState extends State<MyHomePage> {
     return ListView.builder(
       itemCount: repository.deviceList.length,
       itemBuilder: (context, index) {
-        return BleListTile(repository.deviceList[index]);
+        return GestureDetector(
+          onTap: () {
+            repository.connect(repository.deviceList[index]);
+          },
+          child: BleListTile(repository.deviceList[index]),
+        );
       },
     );
   }

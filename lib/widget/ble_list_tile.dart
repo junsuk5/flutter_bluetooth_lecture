@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_lecture/model/ble_device.dart';
+import 'package:flutter_bluetooth_lecture/repository/ble_repository.dart';
 
 class BleListTile extends StatelessWidget {
   final BleDevice device;
