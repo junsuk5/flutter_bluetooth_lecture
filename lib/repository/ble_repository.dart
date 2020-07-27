@@ -29,15 +29,7 @@ class BleRepository with ChangeNotifier {
         var name = scanResult.peripheral.name ??
             scanResult.advertisementData.localName ??
             "Unknown";
-        /*
-        // 여러가지 정보 확인
-        print("Scanned Name ${name}, RSSI ${scanResult.rssi}");
-        print("\tidentifier(mac) ${scanResult.peripheral.identifier}"); //mac address
-        print("\tservice UUID : ${scanResult.advertisementData.serviceUuids}");
-        print("\tmanufacture Data : ${scanResult.advertisementData.manufacturerData}");
-        print("\tTx Power Level : ${scanResult.advertisementData.txPowerLevel}");
-        print("\t${scanResult.peripheral}");
-        */
+
         // 이미 검색된 장치인지 확인 mac 주소로 확인
         var findDevice = deviceList.any((element) {
           if (element.peripheral.identifier ==

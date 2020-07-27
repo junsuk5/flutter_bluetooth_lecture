@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_lecture/repository/ble_repository.dart';
+import 'package:flutter_bluetooth_lecture/widget/ble_list_tile.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 
@@ -70,12 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return ListView.builder(
       itemCount: repository.deviceList.length,
       itemBuilder: (context, index) {
-        return ListTile(
-          //디바이스 이름과 맥주소 그리고 신호 세기를 표시한다.
-          title: Text(repository.deviceList[index].deviceName),
-          subtitle: Text(repository.deviceList[index].peripheral.identifier),
-          trailing: Text("${repository.deviceList[index].rssi}"),
-        );
+        return BleListTile(repository.deviceList[index]);
       },
     );
   }
